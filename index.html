@@ -1,0 +1,394 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Enlaza Aula</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap">
+<style>
+/* Layout: columna de perfil + muro + consejos en escritorio; muro con barra inferior en teléfono */
+:root{
+--bg:#FFFFFF;--surface:#FFFFFF;--surface2:#F5F6F8;--ink:#1B2430;--muted:#5D6675;--line:#E4E7EC;
+--accent:#0E7C6F;--accent-ink:#FFFFFF;--accent-soft:#E7F4F1;--gold:#8A5A00;--gold-soft:#FBF3DF;
+--danger:#B93A2B;--danger-soft:#FBE3DF;
+--display:'Cormorant Garamond','Palatino Linotype',Georgia,serif;
+--body:'Jost','Century Gothic',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--body);
+padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 92px}
+@media(min-width:900px){body{padding-block:0 32px}}
+h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:0;font-weight:600;text-wrap:balance}
+h1{font-size:36px;line-height:1.08}
+h2.h{font-size:32px;margin:4px 0 0}
+h3{font-size:22px;font-weight:700;margin-bottom:10px}
+p{margin:0}
+.muted{color:var(--muted)}.sm{font-size:13px}.xs{font-size:12px}
+.row{display:flex;align-items:center;gap:10px}.between{justify-content:space-between}.grow{flex:1;min-width:0}
+.clamp{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wrap{max-width:1120px;margin:0 auto}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra superior */
+.banner{background:var(--accent-soft);color:var(--ink);font-size:13px;padding:7px 12px;text-align:center;border-radius:0 0 10px 10px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-in{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:10px 0}
+.brand{display:flex;align-items:center;gap:8px;font:700 27px var(--display);letter-spacing:.01em}
+.brand.big{font-size:36px;margin-bottom:18px}
+.dnav{display:none;gap:4px;margin-left:auto}
+.nv{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;border:0;background:none;color:var(--muted);font:600 12px var(--body);padding:6px 12px;border-radius:10px;cursor:pointer}
+.nv svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.nv.on{color:var(--accent)}
+.nv .dot{position:absolute;top:2px;right:8px;min-width:17px;height:17px;border-radius:9px;background:var(--danger);color:#fff;font-size:11px;display:grid;place-items:center;padding:0 4px}
+.pts{margin-left:auto;display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px 5px 6px;font:600 13px var(--body);cursor:pointer}
+@media(min-width:900px){.dnav{display:flex}.pts{margin-left:0}}
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:6;display:flex;justify-content:space-around;background:var(--surface);border-top:1px solid var(--line);
+padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
+@media(min-width:900px){.tabbar{display:none}}
+
+/* rejilla */
+.shell{display:grid;gap:16px;grid-template-columns:minmax(0,1fr);padding-top:16px;align-items:start}
+.shell.one{max-width:760px;margin:0 auto}
+.col-c{display:grid;gap:14px;min-width:0}
+.col-l,.col-r{display:none}
+@media(min-width:900px){
+.shell:not(.one){grid-template-columns:250px minmax(0,1fr) 280px}
+.col-l,.col-r{display:grid;gap:14px;position:sticky;top:76px}
+.mob-only{display:none}}
+
+/* componentes */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;min-width:0;box-shadow:0 1px 2px rgba(27,36,48,.05)}
+.btn{font:600 14px var(--body);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 16px;cursor:pointer}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.ghost{border-color:transparent;background:none;color:var(--muted)}
+.btn.sm{padding:5px 12px;font-size:13px}
+.btn.dng{background:var(--danger);border-color:var(--danger);color:#fff}
+.btn[disabled]{opacity:.55;cursor:default}
+input,textarea,select{font:inherit;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:9px 12px;width:100%;min-width:0}
+textarea{resize:vertical}
+.av{border-radius:50%;display:grid;place-items:center;color:#fff;font-family:var(--display);font-weight:700;overflow:hidden;flex:none}
+.av img{width:100%;height:100%;object-fit:cover}
+.chip{border:1px solid var(--line);background:var(--surface2);color:var(--muted);border-radius:999px;padding:4px 12px;font:600 13px var(--body);cursor:pointer}
+.chip.on{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+.types{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.compose .prev{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px}
+.compose .prev img{width:120px;max-width:40%;border-radius:10px;border:1px solid var(--line)}
+.chk{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--muted);margin-bottom:10px}
+.chk input{width:auto;margin-top:3px}
+.warn{background:var(--danger-soft);border:1px solid var(--danger);border-radius:10px;padding:10px 14px;margin:8px 0;font-size:14px}
+.warn ul{margin:6px 0 6px 18px;padding:0}
+.good{background:var(--accent-soft);border:1px solid var(--accent);border-radius:10px;padding:10px 14px;margin-top:10px;font-size:14px}
+.good ul,.warn.bad ul{margin:6px 0 0 18px;padding:0}
+.post{display:grid;gap:8px}
+.nm{font-weight:600}
+.you{background:var(--accent-soft);color:var(--accent);font-size:11px;border-radius:6px;padding:1px 6px;margin-left:4px}
+.post-text{overflow-wrap:anywhere}
+.tag{color:var(--accent);font-weight:600}
+.post-img{width:100%;max-height:440px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
+.quote{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--surface2);display:grid;gap:6px;overflow-wrap:anywhere}
+.acts{display:flex;gap:4px;border-top:1px solid var(--line);padding-top:6px}
+.act{border:0;background:none;color:var(--muted);font:600 13px var(--body);padding:6px 12px;border-radius:8px;cursor:pointer}
+.act.on{color:var(--accent);background:var(--accent-soft)}
+.cm{display:flex;gap:8px;align-items:flex-start}
+.bub{background:var(--surface2);border-radius:12px;padding:6px 12px;min-width:0;overflow-wrap:anywhere;font-size:14px}
+.cf{margin-top:2px}
+.tip{background:var(--gold-soft);border-color:transparent}
+.tip h3{color:var(--gold);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-family:var(--body)}
+.bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden;margin:6px 0}
+.bar i{display:block;height:100%;background:var(--accent)}
+.lv{font:600 13px var(--body);color:var(--accent);letter-spacing:.03em}
+.stat{display:flex;gap:16px;margin-top:10px}
+.stat b{display:block;font:700 24px var(--display)}
+.person{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.person:first-of-type{border-top:0}
+.req{border-top:1px solid var(--line);padding:12px 0;display:grid;gap:8px}
+.req:first-of-type{border-top:0}
+.msgtxt{background:var(--surface2);border-left:3px solid var(--line);padding:8px 12px;border-radius:0 10px 10px 0;font-size:14px;overflow-wrap:anywhere}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.card + .card{margin-top:0}
+.shell.one{gap:14px}
+.bds{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.bd{border:1px solid var(--line);border-radius:12px;padding:10px;font-size:13px;opacity:.5}
+.bd.on{opacity:1;background:var(--gold-soft);border-color:transparent}
+.bd b{display:block;font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.proj{display:flex;gap:10px;align-items:flex-start;border-top:1px solid var(--line);padding:10px 0}
+.proj:first-of-type{border-top:0}
+.sk{display:inline-flex;gap:6px;align-items:center;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:3px 12px;font-weight:600;font-size:13px}
+.sk button{border:0;background:none;color:inherit;cursor:pointer;font-size:15px;padding:0}
+.form{display:grid;gap:12px}
+.form label{display:grid;gap:4px;font-weight:600;font-size:14px}
+.hint{color:var(--muted);font-size:12px;margin-top:-6px}
+fieldset{border:0;padding:0;margin:0}
+legend{font-weight:600;font-size:14px;margin-bottom:6px}
+.sw input{position:absolute;opacity:0}
+.sw span{display:inline-block;width:34px;height:34px;border-radius:50%;margin-right:6px;border:3px solid transparent;box-shadow:0 0 0 1px var(--line)}
+.sw input:checked + span{border-color:var(--surface);box-shadow:0 0 0 3px var(--ink)}
+.sw input:focus-visible + span{outline:2px solid var(--accent);outline-offset:3px}
+.ob{min-height:100%;display:grid;place-items:center;padding:24px 0}
+.ob-in{width:100%;max-width:520px;display:grid;gap:14px}
+.chat{display:grid;gap:12px}
+.thread{display:grid;gap:8px;max-height:52vh;overflow-y:auto;padding:4px}
+.b{max-width:80%;padding:8px 12px;border-radius:14px;background:var(--surface2);overflow-wrap:anywhere;font-size:14px}
+.b.me{justify-self:end;background:var(--accent);color:var(--accent-ink)}
+.chatrow{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;border-top:1px solid var(--line);background:none;color:var(--ink);padding:10px 0;cursor:pointer;font:inherit}
+.chatrow:first-of-type{border-top:0}
+.nt{display:flex;gap:10px;padding:10px 0;border-top:1px solid var(--line);align-items:flex-start}
+.nt:first-of-type{border-top:0}
+.nt.new{font-weight:600}
+.nt i{width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:8px;flex:none}
+.nt:not(.new) i{background:transparent}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:9;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;max-width:min(92vw,460px);text-align:center}
+@media(min-width:900px){.toast{bottom:28px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div id="app"></div>
+<input type="file" id="file" accept="image/*" hidden>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(()=>{
+const KEY='enlaza.aula.v1';
+const $=s=>document.querySelector(s);
+const uid=()=>Math.random().toString(36).slice(2,9);
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const shuffle=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=t=>esc(t).replace(/(^|\s)#([\p{L}][\p{L}\d_]*)/gu,'$1<span class="tag">#$2</span>').replace(/\n/g,'<br>');
+const rel=t=>{const s=(Date.now()-t)/1000;if(s<60)return'ahora';if(s<3600)return`hace ${Math.floor(s/60)} min`;if(s<86400)return`hace ${Math.floor(s/3600)} h`;return`hace ${Math.floor(s/86400)} d`};
+
+const AREAS=['Tecnología','Diseño y arte','Salud y bienestar','Negocios y emprendimiento','Educación','Ciencias','Oficios y técnica','Comunicación'];
+const COLORS=['#0B8A7A','#E4572E','#3D5AFE','#C2185B','#7B5E00','#5E35B1'];
+const TYPES=[['idea','Idea'],['logro','Logro'],['pregunta','Pregunta'],['proyecto','Proyecto']];
+const TL=Object.fromEntries(TYPES);
+const LEVELS=[['Novato',0],['Explorador',30],['Conectado',80],['Referente',150]];
+const BOT={
+b1:{name:'Mariana Solís',head:'Diseñadora gráfica · Estudio Brújula',c:'#E4572E'},
+b2:{name:'Luis Ramírez',head:'Analista de datos · Laboratorio Cerro Alto',c:'#3D5AFE'},
+b3:{name:'Fernanda Ortega',head:'Chef y emprendedora · Cocina Raíz',c:'#8A5A00'},
+b4:{name:'Andrea Muñoz',head:'Orientadora vocacional · Red Brújula',c:'#0B8A7A'},
+b5:{name:'Tomás Bravo',head:'Técnico electricista · Taller Voltio',c:'#5E35B1'},
+b6:{name:'Sofía Karam',head:'Médica veterinaria · Clínica Pata Norte',c:'#C2185B'},
+b7:{name:'Ramón Ibarra',head:'Docente de ciencias · Preparatoria Aurora',c:'#2E7D32'},
+r2:{name:'Reclutador Premium',head:'Oportunidades de trabajo inmediato',c:'#6B7280'}};
+const FRIENDS=['b1','b2','b3','b4','b5','b6'];
+const CM={
+logro:['¡Felicidades! Se nota el esfuerzo.','Muy buen avance, gracias por compartirlo.','Inspirador. ¿Qué fue lo más difícil?'],
+pregunta:['Yo empezaría con algo pequeño y práctico.','Buena pregunta. A mí me ayudó hablar con un mentor.','Busca un proyecto que te guste, así aprendes más rápido.'],
+proyecto:['Se ve prometedor, ¡mucha suerte con el proyecto!','¿Necesitan apoyo con algo? Cuenten conmigo.','Gran iniciativa, sigue así.'],
+idea:['Gracias por compartir tu idea.','Interesante punto de vista.','Me gustó cómo lo explicas.']};
+const REPLY=['Gracias por comentar, {n}. ¡Qué bueno leerte!','Buen punto, {n}. Gracias por sumarte a la conversación.','¡Gracias, {n}! Cuéntame si pruebas la idea.'];
+const TIPS=[
+'Usa solo tu nombre de pila o un alias. Los apellidos y la escuela ayudan a que alguien te localice.',
+'Un número de teléfono o una dirección en una publicación queda visible para cualquiera que la vea.',
+'Antes de aceptar una solicitud, revisa si el perfil tiene trayectoria real y si el mensaje no pide nada raro.',
+'Si un mensaje te mete prisa o te pide datos, detente, no respondas y avisa a una persona adulta de confianza.',
+'Una foto puede mostrar tu casa, tu uniforme o tu calle. Revísala completa antes de subirla.',
+'Publica como si tu futura jefa o jefe fuera a leerlo. Lo que subes deja huella.',
+'Ningún empleo legítimo te cobra por entrar ni te pide fotos de tus documentos por mensaje.',
+'Puedes ignorar, bloquear y reportar. Cuidarte no es exagerar.'];
+const BADGES=[['first','Primera publicación','Publica tu primer post'],['pic','Con imagen','Publica una imagen'],['talk','Conversador','Escribe 3 comentarios'],['net','Red en marcha','Llega a 3 conexiones'],['full','Perfil completo','Foto, titular, acerca de y 3 habilidades'],['eye','Ojo de halcón','Reporta un mensaje sospechoso'],['shield','Datos protegidos','Corrige una publicación con datos personales']];
+const REQ={
+b7:{msg:'Hola, soy docente de ciencias en la Preparatoria Aurora. Vi tu interés en proyectos escolares y me gustaría conectar para compartirte recursos y convocatorias abiertas.',
+ fb:{aceptar:[true,'Buena decisión. El perfil tiene trayectoria clara, el mensaje es respetuoso y no pide datos personales ni dinero.',10],ignorar:[true,'Ignorar es válido, pero este contacto mostraba señales de confianza: mensaje claro, sin urgencia y sin pedir datos.',3],reportar:[false,'Reportar sirve para conductas riesgosas. Este contacto no pidió datos ni presionó, así que aceptar o ignorar era lo adecuado.',0]},
+ flags:['Mensaje claro y respetuoso','Sin urgencia','No pide datos, dinero ni documentos','Perfil con trayectoria coherente']},
+r2:{msg:'¡FELICIDADES! Fuiste seleccionado para un empleo remoto con pago de $8,000 semanales. Responde HOY con tu WhatsApp, tu dirección y una foto de tu credencial o perderás el lugar.',
+ fb:{reportar:[true,'Excelente. Reportar protege a otras personas además de ti.',15],ignorar:[true,'Bien por no responder. Aun así, reportar ayuda a que esta cuenta deje de contactar a más personas.',6],aceptar:[false,'Alerta: aceptar le abre la puerta a más mensajes de esta persona. En el simulador no se creó la conexión.',0]},
+ flags:['Urgencia: «HOY» o pierdes el lugar','Un premio o empleo que no solicitaste','Pide WhatsApp, dirección y foto de tu credencial','Pago muy alto sin experiencia ni entrevista','Perfil sin trayectoria que se pueda verificar']}};
+
+const SEED=()=>{const m=60000,n=Date.now();return[
+{id:'s1',a:'b1',type:'logro',text:'Terminé la identidad visual de una panadería del barrio. Lo que más aprendí: escuchar primero al cliente y diseñar después. #diseño #aprendizaje',at:n-35*m,likes:['b4','b6','b3'],cm:[{a:'b3',t:'¡Quedó precioso! Gracias por la paciencia.',at:n-20*m}],rp:0},
+{id:'s2',a:'b2',type:'pregunta',text:'Para quienes empiezan en programación: ¿qué proyecto pequeño les ayudó a entender los ciclos y las condiciones? #programación',at:n-120*m,likes:['b1','b5'],cm:[{a:'b5',t:'Yo hice un contador de gastos. Muy útil.',at:n-90*m}],rp:0},
+{id:'s3',a:'b4',type:'idea',text:'Tres preguntas antes de elegir carrera: ¿qué problema me gustaría resolver?, ¿con quién quiero trabajar? y ¿qué aprendo con facilidad? #orientación',at:n-300*m,likes:['b1','b2','b3','b5','b6'],cm:[],rp:0},
+{id:'s4',a:'b3',type:'proyecto',text:'Arrancamos un taller de cocina sin desperdicio con jóvenes de bachillerato. Buscamos ideas de recetas con ingredientes que casi siempre se tiran. #emprendimiento #cocina',at:n-1500*m,likes:['b4','b6'],cm:[{a:'b6',t:'Cuenten conmigo para una charla sobre higiene.',at:n-1400*m}],rp:0},
+{id:'s5',a:'b5',type:'logro',text:'Hoy certifiqué mi primera instalación eléctrica residencial. Un oficio bien hecho también es una carrera. #oficios',at:n-3000*m,likes:['b2','b4','b1'],cm:[],rp:0},
+{id:'s6',a:'b6',type:'idea',text:'Consejo de la semana: antes de adoptar una mascota, visita un refugio y pregunta cómo es su rutina diaria. #bienestar',at:n-4300*m,likes:['b3'],cm:[],rp:0}]};
+const fresh=()=>({me:null,posts:SEED(),queue:[],notifs:[],chats:{},unread:{},conns:[],sent:[],pending:['b7','r2'],res:{},pts:0,badges:[],counts:{comments:0},flags:{},tip:0});
+function load(){try{const r=JSON.parse(localStorage.getItem(KEY));if(r&&r.posts)return r}catch(e){}return fresh()}
+let S=load(),view='home',chat=null,draft={text:'',type:'idea',img:null,ok:false,warn:null},fileFor='post',editing=false,ed=null,editWarn=null,delAsk=null,confirmReset=false,chatWarn=null,dirty=false,toastT;
+if(S.me){S.me.goal=S.me.goal||'';S.me.projects=S.me.projects||[]}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));return true}catch(e){toast('Se llenó el espacio del navegador. Elimina alguna publicación con imagen.');return false}}
+function toast(t){const el=$('#toast');el.textContent=t;el.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>{el.hidden=true},4200)}
+const who=id=>id==='me'?S.me:BOT[id];
+const give=n=>{S.pts+=n};
+const lvl=()=>{let i=0;LEVELS.forEach((l,k)=>{if(S.pts>=l[1])i=k});const nx=LEVELS[i+1];return{name:LEVELS[i][0],next:nx,pct:nx?Math.round((S.pts-LEVELS[i][1])/(nx[1]-LEVELS[i][1])*100):100}};
+const typing=()=>{const a=document.activeElement;return a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.type!=='checkbox'&&a.type!=='radio'};
+
+/* seguridad */
+function riskCheck(t){const r=[];
+ (t.match(/\+?\d[\d\s().-]{7,}\d/g)||[]).some(m=>(m.match(/\d/g)||[]).length>=8)&&r.push('un número de teléfono o de identificación');
+ /[\w.+-]+@[\w-]+\.[\w.]+/.test(t)&&r.push('un correo electrónico');
+ /https?:\/\/|www\./i.test(t)&&r.push('un enlace externo');
+ /\b(calle|colonia|avenida|av\.|fraccionamiento|c\.p\.|cp\s?\d{5})/i.test(t)&&r.push('una dirección');
+ /\b[A-Z]{4}\d{6}[A-Z0-9]{0,8}\b/.test(t)&&r.push('una clave como CURP o RFC');
+ /(estoy solo en casa|estoy sola en casa|mis pap[aá]s no est[aá]n)/i.test(t)&&r.push('información sobre cuándo estás sin compañía');
+ /\b(idiota|est[uú]pid[oa]|pendej[oa]|imb[eé]cil|tarad[oa]|c[aá]llate)\b/i.test(t)&&r.push('lenguaje ofensivo (esta red practica el respeto)');
+ return r}
+const warnH=(title,items,tip)=>`<div class="warn" role="alert"><b>${esc(title)}</b>${items.length?`<ul>${items.map(i=>`<li>${esc(i)}</li>`).join('')}</ul>`:''}${tip?'<p class="sm">Los datos personales publicados pueden servir para localizarte o suplantarte. Reescribe sin ellos y vuelve a intentar.</p>':''}</div>`;
+
+/* insignias */
+function profileDone(){const m=S.me;return !!(m.img&&m.head&&m.about.length>=20&&m.skills.length>=3)}
+function checkBadges(){const mine=S.posts.filter(p=>p.a==='me');
+ const c={first:mine.length>0,pic:mine.some(p=>p.img),talk:S.counts.comments>=3,net:S.conns.length>=3,full:profileDone(),eye:!!S.flags.eye,shield:!!(S.flags.warned&&S.flags.fixed)};
+ BADGES.forEach(b=>{if(c[b[0]]&&!S.badges.includes(b[0])){S.badges.push(b[0]);give(10);toast('Nueva insignia: '+b[1]+' (+10 puntos)')}})}
+
+/* simulación */
+function simPost(p){const bs=shuffle(FRIENDS),nl=2+Math.floor(Math.random()*3),now=Date.now();
+ bs.slice(0,nl).forEach((b,i)=>S.queue.push({k:'like',p:p.id,b,at:now+(5+i*6+Math.random()*5)*1000}));
+ bs.slice(nl-1,nl+Math.floor(Math.random()*2)).forEach((b,i)=>S.queue.push({k:'cm',p:p.id,b,x:pick(CM[p.type]||CM.idea),at:now+(14+i*12+Math.random()*8)*1000}))}
+function notif(txt,pid){S.notifs.unshift({id:uid(),txt,at:Date.now(),r:false,pid});S.notifs=S.notifs.slice(0,40)}
+function apply(q){const p=q.p&&S.posts.find(x=>x.id===q.p);
+ if(q.k==='like'&&p&&!p.likes.includes(q.b)){p.likes.push(q.b);if(p.a==='me')notif(`${BOT[q.b].name} reaccionó a tu publicación`,p.id)}
+ if(q.k==='cm'&&p){p.cm.push({a:q.b,t:q.x,at:Date.now()});if(p.a==='me')notif(`${BOT[q.b].name} comentó tu publicación`,p.id);else notif(`${BOT[q.b].name} respondió tu comentario`,p.id)}
+ if(q.k==='acc'){S.sent=S.sent.filter(x=>x!==q.b);if(!S.conns.includes(q.b)){S.conns.push(q.b);welcome(q.b);notif(`${BOT[q.b].name} aceptó tu solicitud`)}checkBadges()}
+ if(q.k==='msg'){(S.chats[q.b]=S.chats[q.b]||[]).push({f:'bot',t:q.x,at:Date.now()});if(!(view==='msg'&&chat===q.b))S.unread[q.b]=(S.unread[q.b]||0)+1}}
+function welcome(b){(S.chats[b]=S.chats[b]||[]).push({f:'bot',t:pick(['¡Hola! Gracias por conectar. ¿Qué te gustaría aprender en esta red?','¡Qué gusto! Si tienes dudas sobre mi área, pregúntame.']),at:Date.now()});S.unread[b]=(S.unread[b]||0)+1}
+function botReply(t){const l=t.toLowerCase();if(/hola|buenas/.test(l))return'¡Hola! ¿Cómo vas con tu perfil?';if(/gracias/.test(l))return'¡Con gusto! Aquí estoy para lo que necesites.';if(t.includes('?'))return pick(['Buena pregunta. Yo empezaría investigando y probando con un proyecto pequeño.','Depende de tus metas, pero un buen primer paso es hablar con alguien que ya trabaje en eso.']);return pick(['Interesante, cuéntame más.','Qué bien. ¿Y qué es lo que más te gusta de eso?','Entiendo. ¿Has pensado en compartirlo en tu perfil?'])}
+function tick(){const now=Date.now(),due=S.queue.filter(q=>q.at<=now);let ch=false;
+ if(due.length){S.queue=S.queue.filter(q=>q.at>now);due.forEach(apply);save();ch=true}
+ if(ch||dirty){if(typing()||!S.me)dirty=true;else{dirty=false;render()}}}
+
+/* vistas */
+const initials=n=>n.split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase();
+const av=(a,s)=>`<div class="av" style="width:${s}px;height:${s}px;font-size:${Math.round(s*.4)}px;background:${a.c}">${a.img?`<img src="${a.img}" alt="">`:esc(initials(a.name))}</div>`;
+const logo=()=>`<svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><circle cx="11" cy="15" r="9" fill="none" stroke="var(--accent)" stroke-width="3.5"/><circle cx="19" cy="15" r="9" fill="none" stroke="var(--ink)" stroke-width="3.5"/></svg>`;
+const IC={home:'M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',net:'M16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM8 12a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM2 20c0-3 3-5 6-5s6 2 6 5M14 15.5c.6-.3 1.3-.5 2-.5 3 0 6 2 6 5',msg:'M4 5h16v11H9l-5 4z',not:'M6 16v-5a6 6 0 1 1 12 0v5l2 2H4zM10 21h4',me:'M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zM3.5 21c0-4 3.8-6.5 8.5-6.5s8.5 2.5 8.5 6.5'};
+function navH(){const un=S.notifs.filter(n=>!n.r).length,um=Object.values(S.unread).reduce((a,b)=>a+b,0);
+ return[['home','Inicio',0],['net','Mi red',0],['msg','Mensajes',um],['not','Avisos',un],['me','Perfil',0]].map(([k,l,c])=>`<button class="nv ${view===k?'on':''}" data-act="nav" data-v="${k}" ${view===k?'aria-current="page"':''}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${IC[k]}"/></svg>${l}${c?`<span class="dot">${c}</span>`:''}</button>`).join('')}
+function topH(){const l=lvl();return`<div class="banner">Modo práctica: nada se publica en internet. Todo se guarda solo en este dispositivo.</div><header class="top"><div class="top-in"><div class="brand">${logo()}<span>Enlaza Aula</span></div><nav class="dnav" aria-label="Secciones">${navH()}</nav><button class="pts" data-act="nav" data-v="me" aria-label="Ver mi perfil y puntos">${av(S.me,26)}<span>${S.pts} pts · ${l.name}</span></button></div></header>`}
+function postH(p){const a=who(p.a),mine=p.a==='me';
+ const q=p.of?(()=>{const o=S.posts.find(x=>x.id===p.of);return o?`<div class="quote"><b>${esc(who(o.a).name)}</b><span>${esc(o.text.slice(0,200))}${o.text.length>200?'…':''}</span>${o.img?`<img class="post-img" src="${o.img}" alt="Imagen de la publicación original">`:''}</div>`:'<div class="quote muted">Esta publicación ya no está disponible.</div>'})():'';
+ return`<article class="card post" id="${p.id}"><header class="row">${av(a,44)}<div class="grow"><div class="nm">${esc(a.name)}${mine?'<span class="you">Tú</span>':''}</div><div class="muted sm clamp">${esc(a.head)}</div><div class="muted xs">${rel(p.at)} · ${p.of?'Compartido':TL[p.type]}</div></div>${mine?`<button class="btn ghost sm" data-act="del" data-id="${p.id}">${delAsk===p.id?'¿Eliminar?':'Eliminar'}</button>`:''}</header>
+${p.text?`<p class="post-text">${fmt(p.text)}</p>`:''}${q}${p.img?`<img class="post-img" src="${p.img}" alt="Imagen publicada por ${esc(a.name)}">`:''}
+${p.likes.length||p.cm.length?`<div class="muted sm">${p.likes.length?`${p.likes.length} reacciones`:''}${p.likes.length&&p.cm.length?' · ':''}${p.cm.length?`${p.cm.length} comentarios`:''}</div>`:''}
+<div class="acts"><button class="act ${p.likes.includes('me')?'on':''}" data-act="like" data-id="${p.id}">Me gusta</button><button class="act" data-act="focus" data-id="${p.id}">Comentar</button>${!mine&&!p.of?`<button class="act" data-act="rp" data-id="${p.id}">Compartir</button>`:''}</div>
+${p.cm.map(c=>`<div class="cm">${av(who(c.a),30)}<div class="bub"><b>${esc(who(c.a).name)}</b> <span class="muted xs">${rel(c.at)}</span><div>${esc(c.t)}</div></div></div>`).join('')}
+<div class="row cf"><input id="c_${p.id}" data-enter="comment" data-id="${p.id}" maxlength="200" placeholder="Escribe un comentario respetuoso…" aria-label="Comentario"><button class="btn sm pri" data-act="comment" data-id="${p.id}">Enviar</button></div></article>`}
+function composeH(){return`<section class="card compose"><div class="row" style="align-items:flex-start">${av(S.me,44)}<div class="grow"><textarea id="draftText" rows="3" maxlength="500" placeholder="¿Qué quieres compartir? Un logro, una duda o un proyecto…" aria-label="Nueva publicación">${esc(draft.text)}</textarea></div></div>
+<div class="types" role="group" aria-label="Tipo de publicación">${TYPES.map(([k,l])=>`<button class="chip ${draft.type===k?'on':''}" data-act="type" data-k="${k}" aria-pressed="${draft.type===k}">${l}</button>`).join('')}</div>
+${draft.img?`<div class="prev"><img src="${draft.img}" alt="Vista previa de tu imagen"><div class="grow"><label class="chk"><input type="checkbox" id="imgOk" ${draft.ok?'checked':''}><span>Revisé que mi imagen no muestra mi uniforme, mi casa, mi ubicación ni a otras personas sin su permiso.</span></label><button class="btn sm" data-act="rmimg">Quitar imagen</button></div></div>`:''}
+${draft.warn||''}
+<div class="row between"><div class="row"><button class="btn sm" data-act="pick">Agregar imagen</button><span class="muted sm" id="cnt">${draft.text.length}/500</span></div><button class="btn pri" data-act="post">Publicar</button></div>
+<p class="muted xs" style="margin-top:8px">Al subir una imagen se comprime y se borran sus datos ocultos, como la ubicación.</p></section>`}
+function lcard(){const l=lvl(),m=S.me;return`<section class="card"><div class="row">${av(m,52)}<div class="grow"><div class="nm clamp">${esc(m.name)}</div><div class="muted sm">${esc(m.area)}</div></div></div><p class="sm muted" style="margin-top:8px">${esc(m.head)}</p>
+<div style="margin-top:12px"><div class="lv">${l.name} · ${S.pts} pts</div><div class="bar"><i style="width:${l.pct}%"></i></div><div class="muted xs">${l.next?`Siguiente nivel: ${l.next[0]} (${l.next[1]} pts)`:'Nivel máximo'}</div></div>
+<div class="stat"><div><b>${S.conns.length}</b><span class="muted xs">conexiones</span></div><div><b>${S.posts.filter(p=>p.a==='me').length}</b><span class="muted xs">publicaciones</span></div><div><b>${S.badges.length}</b><span class="muted xs">insignias</span></div></div><button class="btn sm" style="margin-top:12px;width:100%" data-act="editme">Editar mi perfil</button></section>`}
+function tipH(c){return`<section class="card tip ${c}"><h3>Consejo de seguridad</h3><p class="sm">${esc(TIPS[S.tip%TIPS.length])}</p><button class="btn sm" style="margin-top:10px" data-act="tip">Otro consejo</button></section>`}
+const sugIds=()=>FRIENDS.filter(id=>!S.conns.includes(id));
+function personH(id,mode){const a=BOT[id];let b='';
+ if(mode==='sug')b=S.sent.includes(id)?'<button class="btn sm" disabled>Solicitud enviada</button>':`<button class="btn sm pri" data-act="connect" data-id="${id}">Conectar</button>`;
+ else b=`<button class="btn sm" data-act="openchat" data-id="${id}">Mensaje</button>`;
+ return`<div class="person">${av(a,44)}<div class="grow"><div class="nm clamp">${esc(a.name)}</div><div class="muted sm clamp">${esc(a.head)}</div></div>${b}</div>`}
+function sugCard(){const l=sugIds().slice(0,3);return`<section class="card"><h3>Personas que quizá conozcas</h3>${l.map(id=>personH(id,'sug')).join('')||'<p class="muted sm">Ya conectaste con todas las personas de práctica.</p>'}</section>`}
+function reqH(id){const a=BOT[id];return`<div class="req"><div class="row">${av(a,44)}<div class="grow"><div class="nm">${esc(a.name)}</div><div class="muted sm">${esc(a.head)}</div></div></div><div class="msgtxt">${esc(REQ[id].msg)}</div><div class="btns"><button class="btn sm pri" data-act="req" data-id="${id}" data-c="aceptar">Aceptar</button><button class="btn sm" data-act="req" data-id="${id}" data-c="ignorar">Ignorar</button><button class="btn sm" data-act="req" data-id="${id}" data-c="reportar">Reportar</button></div></div>`}
+function resH(id){const r=S.res[id],a=BOT[id],bad=!r.ok;return`<div class="req"><div class="row">${av(a,36)}<div class="grow"><div class="nm">${esc(a.name)}</div><div class="muted xs">Elegiste: ${r.c}</div></div></div><div class="${bad?'warn':'good'}" style="margin:0"><b>${esc(r.t)}</b><p class="sm" style="margin-top:6px">${id==='r2'?'Señales de alerta que había:':'Señales de confianza que había:'}</p><ul>${REQ[id].flags.map(f=>`<li>${esc(f)}</li>`).join('')}</ul></div></div>`}
+function netV(){const pend=S.pending.map(reqH).join(''),res=Object.keys(S.res).map(resH).join('');
+ return`<h2 class="h">Mi red</h2>${pend||res?`<section class="card"><h3>Solicitudes recibidas</h3><p class="muted sm" style="margin-bottom:6px">Decide con calma. Revisa quién escribe y qué pide.</p>${pend}${res}</section>`:''}<section class="card"><h3>Personas que quizá conozcas</h3>${sugIds().map(id=>personH(id,'sug')).join('')||'<p class="muted sm">Ya conectaste con todas las personas de práctica.</p>'}</section><section class="card"><h3>Tus conexiones (${S.conns.length})</h3>${S.conns.map(id=>personH(id,'con')).join('')||'<p class="muted sm">Aún no tienes conexiones. Envía una solicitud para empezar.</p>'}</section>`}
+function msgV(){
+ if(!S.conns.length)return`<h2 class="h">Mensajes</h2><section class="card"><p class="muted">Solo puedes escribir a tus conexiones. Conecta con alguien en <b>Mi red</b> para empezar una conversación.</p></section>`;
+ if(!chat)return`<h2 class="h">Mensajes</h2><section class="card">${S.conns.map(id=>`<button class="chatrow" data-act="openchat" data-id="${id}">${av(BOT[id],44)}<div class="grow"><div class="nm">${esc(BOT[id].name)}</div><div class="muted sm clamp">${esc(((S.chats[id]||[]).slice(-1)[0]||{t:'Sin mensajes todavía'}).t)}</div></div>${S.unread[id]?`<span class="you">${S.unread[id]}</span>`:''}</button>`).join('')}</section>`;
+ S.unread[chat]=0;const a=BOT[chat];
+ return`<section class="card chat"><div class="row"><button class="btn sm" data-act="back">Volver</button>${av(a,36)}<div class="grow"><div class="nm clamp">${esc(a.name)}</div><div class="muted xs clamp">${esc(a.head)}</div></div></div><div class="thread" id="thread">${(S.chats[chat]||[]).map(m=>`<div class="b ${m.f==='me'?'me':''}">${esc(m.t)}</div>`).join('')||'<p class="muted sm">Escribe el primer mensaje.</p>'}</div>${chatWarn||''}<div class="row"><input id="chatIn" data-enter="send" maxlength="300" placeholder="Escribe un mensaje…" aria-label="Mensaje"><button class="btn pri" data-act="send">Enviar</button></div><p class="muted xs">Nunca compartas teléfono, dirección ni contraseñas por mensaje.</p></section>`}
+function notV(){const h=`<h2 class="h">Avisos</h2><section class="card">${S.notifs.map(n=>`<div class="nt ${n.r?'':'new'}"><i></i><div class="grow">${esc(n.txt)}<div class="muted xs">${rel(n.at)}</div></div></div>`).join('')||'<p class="muted">Aún no hay avisos. Publica algo y mira cómo reacciona la red de práctica.</p>'}</section>`;S.notifs.forEach(n=>n.r=true);save();return h}
+function meV(){const m=S.me,l=lvl(),pj=m.projects||[];
+ const head=editing&&ed?`<form id="pe" class="card form"><h3>Editar mi perfil</h3><div class="row">${av(m,64)}<div class="btns"><button class="btn sm" type="button" data-act="avatar">${m.img?'Cambiar foto':'Subir foto'}</button>${m.img?'<button class="btn sm" type="button" data-act="rmavatar">Quitar foto</button>':''}</div></div><label>Nombre público<input id="e_name" maxlength="40" required value="${esc(ed.name)}"></label><label>Titular<input id="e_head" maxlength="80" required value="${esc(ed.head)}"></label><label>Área de interés<select id="e_area">${AREAS.map(a=>`<option ${a===ed.area?'selected':''}>${a}</option>`).join('')}</select></label><label>Meta profesional<input id="e_goal" maxlength="100" value="${esc(ed.goal)}" placeholder="Ej. Estudiar diseño industrial"></label><label>Acerca de mí<textarea id="e_about" rows="3" maxlength="300" placeholder="Cuenta qué te interesa y qué quieres aprender (sin datos de contacto).">${esc(ed.about)}</textarea></label><fieldset><legend>Color del avatar</legend>${COLORS.map(c=>`<label class="sw"><input type="radio" name="color" value="${c}" ${c===ed.c?'checked':''}><span style="background:${c}"></span></label>`).join('')}</fieldset>${editWarn||''}<div class="btns"><button class="btn pri" type="submit">Guardar cambios</button><button class="btn" type="button" data-act="cancel">Cancelar</button></div></form>`
+ :`<section class="card"><div class="row" style="align-items:flex-start">${av(m,84)}<div class="grow"><h1>${esc(m.name)}</h1><p>${esc(m.head)}</p><p class="muted sm">${esc(m.area)}</p></div></div>${m.goal?`<p style="margin-top:12px"><b>Meta profesional:</b> ${esc(m.goal)}</p>`:''}<p style="margin-top:8px">${m.about?esc(m.about):'<span class="muted">Aún no escribes tu apartado «Acerca de mí».</span>'}</p><div class="btns" style="margin-top:14px"><button class="btn pri" data-act="edit">Editar mi perfil</button></div></section>`;
+ const done=[['Foto de perfil',!!m.img],['Titular',!!m.head],['Acerca de mí (20+ letras)',m.about.length>=20],['3 habilidades',m.skills.length>=3]];
+ return`${head}<section class="card"><div class="lv">${l.name} · ${S.pts} puntos</div><div class="bar"><i style="width:${l.pct}%"></i></div><div class="muted xs">${l.next?`Te faltan ${l.next[1]-S.pts} puntos para ${l.next[0]}`:'Nivel máximo'}</div><p class="muted sm" style="margin-top:8px">Sumas puntos al publicar, comentar, conectar y decidir bien con las solicitudes.</p></section>
+<section class="card"><h3>Habilidades</h3><div class="chips">${m.skills.map((s,i)=>`<span class="sk">${esc(s)}<button data-act="rmskill" data-i="${i}" aria-label="Quitar ${esc(s)}">×</button></span>`).join('')||'<span class="muted sm">Aún no agregas habilidades.</span>'}</div>${m.skills.length<8?`<div class="row" style="margin-top:10px"><input id="skillIn" data-enter="addskill" maxlength="24" placeholder="Ej. Trabajo en equipo" aria-label="Nueva habilidad"><button class="btn sm pri" data-act="addskill">Agregar</button></div>`:''}</section>
+<section class="card"><h3>Proyectos y logros</h3>${pj.map((p,i)=>`<div class="proj"><div class="grow"><div class="nm">${esc(p.t)}</div><div class="muted sm">${esc(p.d)}</div></div><button class="btn ghost sm" data-act="rmproj" data-i="${i}">Quitar</button></div>`).join('')||'<p class="muted sm">Agrega proyectos escolares, talleres o logros.</p>'}${pj.length<6?`<div class="form" style="margin-top:10px"><input id="pj_t" maxlength="60" placeholder="Nombre del proyecto o logro" aria-label="Nombre del proyecto"><input id="pj_d" data-enter="addproj" maxlength="140" placeholder="Describe en una línea qué hiciste" aria-label="Descripción"><div><button class="btn sm pri" data-act="addproj">Agregar</button></div></div>`:''}</section>
+<section class="card"><h3>Perfil completo</h3>${done.map(d=>`<div class="sm">${d[1]?'✔':'○'} ${d[0]}</div>`).join('')}</section>
+<section class="card"><h3>Insignias</h3><div class="bds">${BADGES.map(b=>`<div class="bd ${S.badges.includes(b[0])?'on':''}"><b>${b[1]}</b>${b[2]}</div>`).join('')}</div></section>
+<h3 style="margin-top:6px">Mis publicaciones</h3>${S.posts.filter(p=>p.a==='me').map(postH).join('')||'<section class="card"><p class="muted sm">Todavía no publicas nada.</p></section>'}
+<section class="card"><h3>Reiniciar simulador</h3>${confirmReset?`<p class="sm">Esto borra tu perfil, publicaciones e imágenes de este dispositivo.</p><div class="btns" style="margin-top:8px"><button class="btn dng sm" data-act="reset2">Sí, borrar todo</button><button class="btn sm" data-act="reset0">Cancelar</button></div>`:`<button class="btn sm" data-act="reset">Empezar de cero</button>`}</section>`}
+function onboard(){return`<div class="ob"><div class="ob-in"><div class="brand big">${logo()}<span>Enlaza Aula</span></div><h1>Crea tu perfil de práctica</h1><p class="muted">Aprende a moverte en una red profesional. Es un simulador: nada se publica en internet y todo se guarda solo en este dispositivo.</p><form id="ob" class="card form"><label>Nombre público<input id="f_name" maxlength="40" required placeholder="Tu nombre de pila o un alias" autocomplete="off"></label><div class="hint">No uses apellidos, escuela ni datos de contacto.</div><label>Titular<input id="f_head" maxlength="80" required placeholder="Ej. Estudiante de bachillerato con interés en diseño" autocomplete="off"></label><label>Área de interés<select id="f_area">${AREAS.map(a=>`<option>${a}</option>`).join('')}</select></label><fieldset><legend>Color de tu avatar</legend>${COLORS.map((c,i)=>`<label class="sw"><input type="radio" name="color" value="${c}" ${i?'':'checked'}><span style="background:${c}"></span></label>`).join('')}</fieldset><div id="obwarn"></div><button class="btn pri" type="submit">Entrar a Enlaza Aula</button></form></div></div>`}
+function render(){const y=scrollY,app=$('#app');
+ if(!S.me){app.innerHTML=onboard();return}
+ let body='',cls='shell one';
+ if(view==='home'){cls='shell';body=`<aside class="col-l">${lcard()}</aside><section class="col-c">${tipH('mob-only')}${composeH()}${S.posts.map(postH).join('')}</section><aside class="col-r">${tipH('')}${sugCard()}</aside>`}
+ else if(view==='net')body=netV();else if(view==='msg')body=msgV();else if(view==='not')body=notV();else body=meV();
+ app.innerHTML=topH()+`<div class="wrap"><div class="${cls}">${body}</div></div><nav class="tabbar" aria-label="Secciones">${navH()}</nav>`;
+ scrollTo(0,y);const t=$('#thread');if(t)t.scrollTop=t.scrollHeight}
+
+/* acciones */
+function doPost(){const t=draft.text.trim();
+ if(!t&&!draft.img){draft.warn=warnH('Escribe algo o agrega una imagen para publicar.',[]);return render()}
+ const r=riskCheck(t);
+ if(r.length){S.flags.warned=true;save();draft.warn=warnH('No se publicó. Revisa estos puntos:',r,true);return render()}
+ if(draft.img&&!draft.ok){draft.warn=warnH('Confirma la revisión de tu imagen antes de publicar.',[]);return render()}
+ const p={id:uid(),a:'me',type:draft.type,text:t,img:draft.img,at:Date.now(),likes:[],cm:[],rp:0};
+ S.posts.unshift(p);if(S.flags.warned)S.flags.fixed=true;
+ if(!save()){S.posts.shift();return render()}
+ simPost(p);give(10);draft={text:'',type:'idea',img:null,ok:false,warn:null};save();checkBadges();save();toast('Publicado en tu muro de práctica (+10 puntos)');render()}
+function doComment(id){const el=$('#c_'+id),t=el.value.trim();if(!t)return;
+ const r=riskCheck(t);if(r.length){S.flags.warned=true;save();toast('Comentario no enviado. Evita compartir: '+r.join(', ')+'.');return}
+ const p=S.posts.find(x=>x.id===id);p.cm.push({a:'me',t,at:Date.now()});S.counts.comments++;give(3);if(S.flags.warned)S.flags.fixed=true;
+ if(p.a!=='me'&&Math.random()<.7)S.queue.push({k:'cm',p:id,b:p.a,x:pick(REPLY).replace('{n}',S.me.name.split(' ')[0]),at:Date.now()+(6+Math.random()*8)*1000});
+ save();checkBadges();save();render()}
+function doSend(){const el=$('#chatIn'),t=el.value.trim();if(!t)return;
+ const r=riskCheck(t);if(r.length){S.flags.warned=true;save();chatWarn=warnH('Mensaje no enviado. Evita compartir:',r,true);return render()}
+ chatWarn=null;(S.chats[chat]=S.chats[chat]||[]).push({f:'me',t,at:Date.now()});S.queue.push({k:'msg',b:chat,x:botReply(t),at:Date.now()+(2+Math.random()*3)*1000});save();render();$('#chatIn')&&$('#chatIn').focus()}
+function doReq(id,c){if(!S.pending.includes(id))return;const [ok,t,pts]=REQ[id].fb[c];
+ S.pending=S.pending.filter(x=>x!==id);S.res[id]={c,ok,t};give(pts);
+ if(id==='b7'&&c==='aceptar'&&!S.conns.includes('b7')){S.conns.push('b7');welcome('b7')}
+ if(id==='r2'&&c==='reportar')S.flags.eye=true;
+ save();checkBadges();save();render()}
+function handleFile(f){if(!f)return;if(!/^image\//.test(f.type)){toast('Elige un archivo de imagen.');return}
+ if(f.size>10e6){toast('La imagen pesa demasiado. Elige una de menos de 10 MB.');return}
+ const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas'),x=c.getContext('2d');
+  if(fileFor==='avatar'){const m=Math.min(im.width,im.height);c.width=c.height=200;x.drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,200,200)}
+  else{const s=Math.min(1,800/Math.max(im.width,im.height));c.width=Math.round(im.width*s);c.height=Math.round(im.height*s);x.drawImage(im,0,0,c.width,c.height)}
+  const d=c.toDataURL('image/jpeg',.72);
+  if(fileFor==='avatar'){S.me.img=d;save();checkBadges();save()}else{draft.img=d;draft.ok=false;draft.warn=null}
+  render()};im.onerror=()=>toast('No se pudo leer la imagen.');im.src=fr.result};fr.readAsDataURL(f)}
+function startEdit(){const m=S.me;ed={name:m.name,head:m.head,area:m.area,goal:m.goal||'',about:m.about,c:m.c};editing=true;editWarn=null;chatWarn=null;render();scrollTo(0,0)}
+function go(v){view=v;if(v!=='msg')chat=null;editing=false;ed=null;editWarn=null;confirmReset=false;delAsk=null;chatWarn=null;render();scrollTo(0,0)}
+function act(a,d){switch(a){
+ case'nav':go(d.v);break;
+ case'type':draft.type=d.k;render();break;
+ case'pick':fileFor='post';$('#file').click();break;
+ case'avatar':fileFor='avatar';$('#file').click();break;
+ case'rmimg':draft.img=null;draft.ok=false;render();break;
+ case'post':doPost();break;
+ case'like':{const p=S.posts.find(x=>x.id===d.id),i=p.likes.indexOf('me');if(i<0){p.likes.push('me');if(!p.lk){p.lk=1;give(1)}}else p.likes.splice(i,1);save();render();break}
+ case'focus':{const el=$('#c_'+d.id);el&&el.focus();break}
+ case'comment':doComment(d.id);break;
+ case'rp':{const o=S.posts.find(x=>x.id===d.id);if(!o)break;S.posts.unshift({id:uid(),a:'me',type:'idea',text:'',of:o.id,at:Date.now(),likes:[],cm:[],rp:0});o.rp++;give(2);save();toast('Compartiste la publicación (+2 puntos)');render();break}
+ case'del':if(delAsk===d.id){S.posts=S.posts.filter(p=>p.id!==d.id);S.queue=S.queue.filter(q=>q.p!==d.id);delAsk=null;save();toast('Publicación eliminada')}else delAsk=d.id;render();break;
+ case'tip':S.tip=(S.tip+1)%TIPS.length;save();render();break;
+ case'connect':if(!S.sent.includes(d.id)&&!S.conns.includes(d.id)){S.sent.push(d.id);give(5);S.queue.push({k:'acc',b:d.id,at:Date.now()+(6+Math.random()*8)*1000});save();toast('Solicitud enviada (+5 puntos)');render()}break;
+ case'req':doReq(d.id,d.c);break;
+ case'openchat':view='msg';chat=d.id;chatWarn=null;render();break;
+ case'back':chat=null;chatWarn=null;render();break;
+ case'send':doSend();break;
+ case'addskill':{const el=$('#skillIn'),t=el.value.trim();if(!t)break;const r=riskCheck(t);if(r.length){toast('Esa habilidad contiene '+r[0]+'.');break}S.me.skills.push(t);save();checkBadges();save();render();break}
+ case'rmskill':S.me.skills.splice(+d.i,1);save();render();break;
+ case'edit':startEdit();break;
+ case'cancel':editing=false;ed=null;editWarn=null;render();break;
+ case'editme':view='me';chat=null;startEdit();break;
+ case'rmavatar':S.me.img=null;save();render();break;
+ case'addproj':{const t=$('#pj_t').value.trim(),dd=$('#pj_d').value.trim();if(!t){toast('Escribe el nombre del proyecto o logro.');break}const r=riskCheck(t+' '+dd);if(r.length){S.flags.warned=true;save();toast('Evita compartir: '+r.join(', ')+'.');break}S.me.projects=S.me.projects||[];S.me.projects.push({t,d:dd});give(3);save();toast('Proyecto agregado (+3 puntos)');render();break}
+ case'rmproj':S.me.projects.splice(+d.i,1);save();render();break;
+ case'reset':confirmReset=true;render();break;
+ case'reset0':confirmReset=false;render();break;
+ case'reset2':try{localStorage.removeItem(KEY)}catch(e){}S=fresh();view='home';chat=null;draft={text:'',type:'idea',img:null,ok:false,warn:null};confirmReset=false;render();break}}
+
+document.addEventListener('click',e=>{const el=e.target.closest('[data-act]');if(el)act(el.dataset.act,el.dataset)});
+document.addEventListener('input',e=>{if(e.target.id==='draftText'){draft.text=e.target.value;draft.warn=null;const w=document.querySelector('.compose .warn');if(w)w.remove();$('#cnt').textContent=draft.text.length+'/500'}});
+document.addEventListener('input',e=>{const i=e.target.id;if(ed&&i&&i.startsWith('e_'))ed[i.slice(2)]=e.target.value});
+document.addEventListener('change',e=>{if(e.target.name==='color'&&ed)ed.c=e.target.value;if(e.target.id==='imgOk')draft.ok=e.target.checked;if(e.target.id==='file'){handleFile(e.target.files[0]);e.target.value=''}});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.dataset&&e.target.dataset.enter){e.preventDefault();const b=document.querySelector(`[data-act="${e.target.dataset.enter}"]${e.target.dataset.id?`[data-id="${e.target.dataset.id}"]`:''}`);b&&b.click()}});
+document.addEventListener('submit',e=>{e.preventDefault();
+ if(e.target.id==='ob'){const n=$('#f_name').value.trim(),h=$('#f_head').value.trim(),r=riskCheck(n+' '+h);
+  if(r.length){$('#obwarn').innerHTML=warnH('Revisa estos puntos antes de continuar:',r,true);return}
+  const col=document.querySelector('input[name=color]:checked').value;
+  S.me={name:n,head:h,area:$('#f_area').value,about:'',goal:'',projects:[],skills:[],c:col,img:null};give(5);save();toast('Bienvenida o bienvenido a Enlaza Aula (+5 puntos)');render()}
+ if(e.target.id==='pe'&&ed){const n=(ed.name||'').trim(),h=(ed.head||'').trim(),a=(ed.about||'').trim(),g=(ed.goal||'').trim(),r=riskCheck(n+' '+h+' '+a+' '+g);
+  if(r.length){S.flags.warned=true;save();editWarn=warnH('No se guardó. Revisa estos puntos:',r,true);return render()}
+  Object.assign(S.me,{name:n,head:h,about:a,goal:g,area:ed.area,c:ed.c});
+  editing=false;editWarn=null;ed=null;if(S.flags.warned)S.flags.fixed=true;save();checkBadges();save();toast('Perfil actualizado');render()}});
+render();tick();setInterval(tick,3000);
+})();
+</script>
+
+</body></html>
